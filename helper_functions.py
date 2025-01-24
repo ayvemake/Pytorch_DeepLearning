@@ -292,3 +292,35 @@ def download_data(source: str,
             os.remove(data_path / target_file)
     
     return image_path
+
+class CircleModelV1(nn.Module):
+    def __init__(self, input_features=2):
+        """
+        Initialise le modèle de réseau de neurones.
+        
+        Args:
+            input_features (int, optional): Nombre de caractéristiques d'entrée. Défaut à 2.
+        """
+        super().__init__()
+        
+        # Définir les couches du modèle avec 3 couches
+        self.layer_1 = nn.Linear(in_features=input_features, out_features=10)
+        self.layer_2 = nn.Linear(in_features=10, out_features=10)
+        self.layer_3 = nn.Linear(in_features=10, out_features=1)
+
+    def forward(self, x):
+        """
+        Définit le passage forward des données à travers le réseau.
+        
+        Args:
+            x (torch.Tensor): Tenseur d'entrée
+        
+        Returns:
+            torch.Tensor: Sortie du modèle
+        """
+        # Passage à travers les couches avec activation ReLU
+        x = torch.relu(self.layer_1(x))
+        x = torch.relu(self.layer_2(x))
+        x = self.layer_3(x)
+        
+        return x
