@@ -1,0 +1,15 @@
+# Ignorer le dossier data qui contient les données MNIST
+data/
+data/FashionMNIST/
+
+# Ignorer les fichiers Python compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorer les fichiers de notebook Jupyter
+.ipynb_checkpoints/
+
+# Ignorer les fichiers d'environnement virtuel
+venv/
+env/
